@@ -9,7 +9,7 @@ import "./layout.scss";
 const Layout = props => {
   const { children } = props;
   const data = useStaticQuery(graphql`
-    query LayoutQuery {
+    query {
       site {
         siteMetadata {
           title

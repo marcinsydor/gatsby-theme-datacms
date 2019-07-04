@@ -57,7 +57,7 @@ const PageTemplate = ({ data }) => {
 };
 
 export const query = graphql`
-  query PageQuery($slug: String!) {
+  query($slug: String!) {
     datoCmsPage(slug: { eq: $slug }) {
       slug
       title

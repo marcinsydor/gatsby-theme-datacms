@@ -36,7 +36,7 @@ const ProjectTemplate = ({ data }) => {
 };
 
 export const query = graphql`
-  query ProjectQuery($slug: String!) {
+  query($slug: String!) {
     datoCmsProject(slug: { eq: $slug }) {
       title
       slug
