@@ -1,0 +1,63 @@
+@import "reset";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+body,
+html {
+  // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  //   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  //   sans-serif;
+  font-family: "Open Sans", "PT Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#___gatsby {
+  height: 100%;
+
+  & > div {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    // min-height: 100%;
+    // display: grid;
+    // grid-template-rows: 1fr auto;
+    // grid-template-columns: 100%;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+img {
+  display: block;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// .email-icon {
+// }
+
+// .phone-icon {
+// }

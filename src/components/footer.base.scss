@@ -1,0 +1,17 @@
+.host {
+
+    $color: #b4c6d6;
+  
+    background-color: #496279;
+    color: $color;
+  
+    .contact-content {
+      p {
+        margin: 0;
+      }
+      a {
+        color: $color;
+      }
+    }
+  }
+  
