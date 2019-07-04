@@ -17,13 +17,6 @@ module.exports = themeOptions => {
       `gatsby-theme-ui`,
       `gatsby-plugin-react-helmet`,
       {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: `src`,
-          path: `${__dirname}/src`
-        }
-      },
-      {
         resolve: `gatsby-plugin-sass`,
         options: {
           cssLoaderOptions: {
@@ -64,8 +57,6 @@ module.exports = themeOptions => {
           }
         }
       },
-
-      `gatsby-transformer-sharp`,
       `gatsby-plugin-sharp`,
       {
         resolve: `gatsby-plugin-manifest`,

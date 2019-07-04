@@ -9,7 +9,7 @@ import "./layout.scss";
 const Layout = props => {
   const { children } = props;
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query LayoutQuery {
       site {
         siteMetadata {
           title
@@ -25,15 +25,24 @@ const Layout = props => {
         slug
         content
       }
+      mainMenu: datoCmsMenu(slug: { eq: "main" }) {
+        links {
+          ... on DatoCmsPage {
+            slug
+            title
+          }
+        }
+      }
+      footerMenu: datoCmsMenu(slug: { eq: "footer" }) {
+        links {
+          ... on DatoCmsPage {
+            slug
+            title
+          }
+        }
+      }
     }
   `);
-
-  // mainMenu: wordpressWpApiMenusMenusItems(slug: {eq: "main"}) {
-  //   items {
-  //     title
-  //     slug: object_slug
-  //   }
-  // }
 
   return (
     <>
