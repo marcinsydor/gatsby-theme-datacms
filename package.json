@@ -7,7 +7,7 @@
   "main": "index.js",
   "dependencies": {
     "gatsby-theme-ui": "*",
-    "gatsby": "^2.13.3",
+    "gatsby": "2.9.10",
     "gatsby-image": "^2.2.4",
     "gatsby-plugin-manifest": "^2.2.1",
     "gatsby-plugin-offline": "^2.2.0",
@@ -17,7 +17,7 @@
     "gatsby-plugin-sass": "^2.1.0",
     "gatsby-plugin-sharp": "^2.2.2",
     "gatsby-plugin-sitemap": "^2.2.1",
-    "gatsby-source-datocms": "^2.1.13",
+    "gatsby-source-datocms": "2.1.14",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

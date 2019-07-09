@@ -9,7 +9,7 @@ import "./layout.scss";
 const Layout = props => {
   const { children } = props;
   const data = useStaticQuery(graphql`
-    query {
+    query LayoutQuery {
       site {
         siteMetadata {
           title
@@ -49,8 +49,8 @@ const Layout = props => {
       <Header
         siteTitle={data.site.siteMetadata.title}
         headerContent={data.header.content}
+        mainMenu={data.mainMenu}
       />
-      {/* mainMenu={data.mainMenu} */}
       <main>{children}</main>
       <Footer
         siteTitle={data.site.siteMetadata.title}
