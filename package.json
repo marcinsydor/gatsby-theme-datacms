@@ -6,7 +6,8 @@
   "author": "Marcin Sydor <info@twigcity.com>",
   "main": "index.js",
   "dependencies": {
-    "gatsby-theme-ui": "*",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "gatsby-image": "^2.2.4",
     "gatsby-plugin-manifest": "^2.2.1",
     "gatsby-plugin-offline": "^2.2.0",
@@ -17,27 +18,25 @@
     "gatsby-plugin-sharp": "^2.2.2",
     "gatsby-plugin-sitemap": "^2.2.1",
     "gatsby-source-datocms": "2.1.14",
+    "gatsby-theme-ui": "*",
+    "gatsby-transformer-remark": "^2.6.1",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react-css-modules": "^4.7.11",
     "react-helmet": "^5.2.1",
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
     "sass": "^1.21.0"
   },
-
   "devDependencies": {
     "gatsby": "2.9.10",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "prettier": "^1.18.2"
+    "react-dom": "^16.8.6"
   },
   "peerDependencies": {
     "gatsby": "2.9.10",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
-
   "keywords": [
     "gatsby"
   ],
@@ -56,5 +55,4 @@
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
-
 }

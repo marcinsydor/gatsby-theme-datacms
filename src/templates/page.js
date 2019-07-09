@@ -13,7 +13,13 @@ const PageTemplate = ({ data }) => {
   const getBlockContent = (block, type, key) => {
     switch (type) {
       case "content":
-        return <div dangerouslySetInnerHTML={{ __html: block.content }} />;
+        return (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: block.contentNode.childMarkdownRemark.html
+            }}
+          />
+        );
       case "gallery":
         return <Gallery gallery={block.images} />;
       case "slideshow":
@@ -101,6 +107,11 @@ export const query = graphql`
             apiKey
           }
           content
+          contentNode {
+            childMarkdownRemark {
+              html
+            }
+          }
           sectionImage {
             url
           }
