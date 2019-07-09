@@ -13,8 +13,8 @@ module.exports = themeOptions => {
       author: `info@twigcity.com`,
       ...siteMetadata
     },
+    __experimentalThemes: [`gatsby-theme-ui`],
     plugins: [
-      `gatsby-theme-ui`,
       `gatsby-plugin-react-helmet`,
       {
         resolve: `gatsby-plugin-sass`,

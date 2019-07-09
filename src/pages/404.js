@@ -7,7 +7,7 @@ const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
 
-    <Section height={`400px`} backgroundColor={'#9BD0ED'}>
+    <Section height={`400px`} backgroundColor={`#9BD0ED`}>
       <h1>NOT FOUND</h1>
       <p>Page does not exist.</p>
     </Section>

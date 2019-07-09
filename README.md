@@ -1,1 +1,1 @@
-# Gatsby website demo
+# Gatsby theme datocms
