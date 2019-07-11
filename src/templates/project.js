@@ -1,24 +1,30 @@
 import { graphql } from "gatsby";
 import React from "react";
 import Gallery from "../components/gallery";
-import Layout from "../components/layout";
 import Section from "../components/section";
 import SEO from "../components/seo";
 
 const ProjectTemplate = ({ data }) => {
   const { title, gallery, image, content } = data.datoCmsProject;
 
-  gallery.map(image => ({
-    ...image,
-    thumb: image.url
-  }));
-  // thumb: image.thumb.childImageSharp.resize.src
+  const convertedGallery = gallery.map(image => {
+    return {
+      title: `title: ` + image.title,
+      alt: image.alt,
+      url: image.image.src,
+      thumb: image.thumb
+    };
+  });
 
   return (
-    <Layout>
+    <>
       <SEO title={title} />
 
-      <Section backgroundImage={image.url} height={`400px`} type={"content"}>
+      <Section
+        backgroundImage={image.fluid.src}
+        height={`400px`}
+        type={"content"}
+      >
         <h1 className="title">{title}</h1>
       </Section>
 
@@ -26,12 +32,12 @@ const ProjectTemplate = ({ data }) => {
         {content && <div dangerouslySetInnerHTML={{ __html: content }} />}
       </Section>
 
-      {gallery && (
+      {convertedGallery && (
         <Section type={"gallery"}>
-          <Gallery gallery={gallery} />
+          <Gallery gallery={convertedGallery} />
         </Section>
       )}
-    </Layout>
+    </>
   );
 };
 
@@ -42,13 +48,34 @@ export const query = graphql`
       slug
       content
       image {
-        url
-        alt
+        fluid(
+          maxWidth: 1200
+          imgixParams: { fm: "jpg", auto: "compress", fit: "clip", w: "1200" }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
       }
       gallery {
-        thumb: url
-        url
+        title
         alt
+        thumb: fluid(
+          maxWidth: 360
+          imgixParams: {
+            fm: "jpg"
+            auto: "compress"
+            fit: "crop"
+            w: "360"
+            h: "360"
+          }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
+        image: fluid(
+          maxWidth: 1200
+          imgixParams: { fm: "jpg", auto: "compress", fit: "clip", w: "1200" }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
       }
     }
   }

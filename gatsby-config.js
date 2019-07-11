@@ -91,9 +91,15 @@ module.exports = themeOptions => {
           // GitHub Flavored Markdown mode (default: true)
           gfm: true,
           // Plugins configs
-          plugins: [],
-        },
+          plugins: []
+        }
       },
+      {
+        resolve: `gatsby-plugin-layout`,
+        options: {
+          component: require.resolve(`./src/components/layout.js`)
+        }
+      }
       // this (optional) plugin enables Progressive Web App + Offline functionality
       // To learn more, visit: https://gatsby.app/offline
       // 'gatsby-plugin-offline',

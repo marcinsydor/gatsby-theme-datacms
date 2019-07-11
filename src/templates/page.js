@@ -2,7 +2,6 @@ import { graphql } from "gatsby";
 import { Slideshow } from "gatsby-theme-ui";
 import React from "react";
 import Gallery from "../components/gallery";
-import Layout from "../components/layout";
 import Projects from "../components/projects";
 import Section from "../components/section";
 import SEO from "../components/seo";
@@ -25,10 +24,12 @@ const PageTemplate = ({ data }) => {
       case "slideshow":
         return block.images && <Slideshow images={block.images} />;
       case "projects": {
-        const projects = block.projects.map(project => ({
-          ...project,
-          thumb: project.thumb.fluid.src
-        }));
+        const projects = block.projects.map(project => {
+          return {
+            ...project,
+            thumb: project.thumb.fluid.src
+          };
+        });
         return <Projects projects={projects} />;
       }
 
@@ -38,7 +39,7 @@ const PageTemplate = ({ data }) => {
   };
 
   return (
-    <Layout>
+    <>
       <SEO title={title} />
 
       {blocks &&
@@ -58,7 +59,7 @@ const PageTemplate = ({ data }) => {
             </Section>
           );
         })}
-    </Layout>
+    </>
   );
 };
 
@@ -83,7 +84,6 @@ export const query = graphql`
           projects {
             title
             slug
-            content
             thumb: image {
               fluid(
                 maxWidth: 360
@@ -95,9 +95,7 @@ export const query = graphql`
                   h: "360"
                 }
               ) {
-                width
-                height
-                src
+                ...GatsbyDatoCmsFluid
               }
             }
           }
