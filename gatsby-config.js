@@ -58,6 +58,7 @@ module.exports = themeOptions => {
         }
       },
       `gatsby-plugin-sharp`,
+      `gatsby-background-image`,
       {
         resolve: `gatsby-plugin-manifest`,
         options: {

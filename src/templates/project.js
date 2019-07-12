@@ -1,8 +1,8 @@
 import { graphql } from "gatsby";
 import React from "react";
 import Gallery from "../components/gallery";
-import Section from "../components/section";
 import SEO from "../components/seo";
+import { Section } from "gatsby-theme-ui";
 
 const ProjectTemplate = ({ data }) => {
   const { title, gallery, image, content } = data.datoCmsProject;

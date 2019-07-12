@@ -1,9 +1,9 @@
 import { graphql } from "gatsby";
-import { Slideshow } from "gatsby-theme-ui";
+import { Section, Slideshow } from "gatsby-theme-ui";
 import React from "react";
+import Content from "../components/content";
 import Gallery from "../components/gallery";
 import Projects from "../components/projects";
-import Section from "../components/section";
 import SEO from "../components/seo";
 
 const PageTemplate = ({ data }) => {
@@ -13,14 +13,16 @@ const PageTemplate = ({ data }) => {
     switch (type) {
       case "content":
         return (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: block.contentNode.childMarkdownRemark.html
-            }}
-          />
+          <Content>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: block.contentNode.childMarkdownRemark.html
+              }}
+            />
+          </Content>
         );
       case "gallery":
-        return <Gallery gallery={block.images} />;
+        return block.images && <Gallery gallery={block.images} />;
       case "slideshow":
         return block.images && <Slideshow images={block.images} />;
       case "projects": {
