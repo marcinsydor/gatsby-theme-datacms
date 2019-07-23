@@ -53,6 +53,7 @@ const PageTemplate = ({ data }) => {
               key={key}
               // className="banner"
               type={type}
+              fluid={block.sectionImage && block.sectionImage.fluid}
               backgroundImage={block.sectionImage && block.sectionImage.url}
               backgroundColor={block.sectionColor && block.sectionColor.rgb}
               height={`400px`}
@@ -113,7 +114,9 @@ export const query = graphql`
             }
           }
           sectionImage {
-            url
+            fluid(maxWidth: 1200) {
+              ...GatsbyDatoCmsFluid
+            }
           }
           sectionColor {
             rgb
