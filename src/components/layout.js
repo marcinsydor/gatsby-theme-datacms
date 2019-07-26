@@ -17,12 +17,20 @@ const Layout = props => {
       header: datoCmsWidget(slug: { eq: "header" }) {
         title
         slug
-        content
+        contentNode {
+          childMarkdownRemark {
+            html
+          }
+        }
       }
       footer: datoCmsWidget(slug: { eq: "footer" }) {
         title
         slug
-        content
+        contentNode {
+          childMarkdownRemark {
+            html
+          }
+        }
       }
       mainMenu: datoCmsMenu(slug: { eq: "main" }) {
         links {
@@ -44,7 +52,7 @@ const Layout = props => {
   `);
 
   return (
-    <>
+    <div className={styles.host}>
       <AppBar headerContent={data.header.content} mainMenu={data.mainMenu}>
         <Link className={styles.logo} to="/">
           {data.site.name}
@@ -52,14 +60,16 @@ const Layout = props => {
 
         <div
           className={styles.contactContent}
-          dangerouslySetInnerHTML={{ __html: data.header.content }}
+          dangerouslySetInnerHTML={{
+            __html: data.header.contentNode.childMarkdownRemark.html
+          }}
         />
 
         <Menu links={data.mainMenu.links} />
       </AppBar>
       <main>{children}</main>
       <Footer siteTitle={data.site.name} footerContent={data.site.name} />
-    </>
+    </div>
   );
 };
 

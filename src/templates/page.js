@@ -51,7 +51,6 @@ const PageTemplate = ({ data }) => {
           return (
             <Section
               key={key}
-              // className="banner"
               type={type}
               fluid={block.sectionImage && block.sectionImage.fluid}
               backgroundImage={block.sectionImage && block.sectionImage.url}

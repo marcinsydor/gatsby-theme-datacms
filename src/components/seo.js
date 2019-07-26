@@ -9,17 +9,17 @@ function SEO({ description, lang, meta, keywords, title }) {
       query={detailsQuery}
       render={data => {
         const metaDescription =
-          description || data.site.siteMetadata.description;
+          description || data.site.globalSeo.fallbackSeo.description;
         return (
           <Helmet
             htmlAttributes={{
               lang
             }}
-            title={title || data.site.siteMetadata.title}
+            title={title || data.site.globalSeo.fallbackSeo.title}
             titleTemplate={
-              title
-                ? `%s | ${data.site.siteMetadata.title}`
-                : data.site.siteMetadata.title
+              title !== `Home`
+                ? `%s | ${data.site.globalSeo.fallbackSeo.title}`
+                : data.site.globalSeo.fallbackSeo.title
             }
             meta={[
               {
@@ -44,7 +44,7 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
               {
                 name: `twitter:creator`,
-                content: data.site.siteMetadata.author
+                content: `info@twigcity.com`
               },
               {
                 name: `twitter:title`,
@@ -89,11 +89,14 @@ export default SEO;
 
 const detailsQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-        description
-        author
+    site: datoCmsSite {
+      globalSeo {
+        siteName
+        fallbackSeo {
+          description
+          title
+        }
+        titleSuffix
       }
     }
   }

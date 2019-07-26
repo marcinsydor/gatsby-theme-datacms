@@ -1,18 +1,9 @@
 module.exports = themeOptions => {
-  const siteMetadata = themeOptions.siteMetadata || {};
-  siteMetadata.title = siteMetadata.title || `Website Title`;
-  siteMetadata.description = siteMetadata.description || `Website Description`;
-  siteMetadata.siteUrl = siteMetadata.siteUrl || "https://twigcity.com";
-
   const datacms = themeOptions.datocms || {};
   datacms.apiToken = themeOptions.datacms.apiToken || "";
   datacms.previewMode = themeOptions.datacms.previewMode || false;
 
   return {
-    siteMetadata: {
-      author: `info@twigcity.com`,
-      ...siteMetadata
-    },
     __experimentalThemes: [`gatsby-theme-ui`],
     plugins: [
       `gatsby-plugin-react-helmet`,
