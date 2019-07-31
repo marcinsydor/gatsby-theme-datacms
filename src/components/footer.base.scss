@@ -1,17 +1,18 @@
 .host {
+  $color: #b4c6d6;
 
-    $color: #b4c6d6;
-  
-    background-color: #496279;
-    color: $color;
-  
-    .contact-content {
-      p {
-        margin: 0;
-      }
-      a {
-        color: $color;
-      }
+  background-color: #496279;
+  color: $color;
+
+  padding: 20px 15px;
+  text-align: center;
+
+  .contact-content {
+    p {
+      margin: 0;
+    }
+    a {
+      color: $color;
     }
   }
-  
+}

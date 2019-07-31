@@ -5,7 +5,6 @@ import React from "react";
 import "../styles/global.scss";
 import Footer from "./footer";
 import styles from "./layout.module.scss";
-import "./layout.scss";
 
 const Layout = props => {
   const { children } = props;
@@ -59,7 +58,7 @@ const Layout = props => {
         </Link>
 
         <div
-          className={styles.contactContent}
+          className={styles.headerWidget}
           dangerouslySetInnerHTML={{
             __html: data.header.contentNode.childMarkdownRemark.html
           }}
@@ -67,7 +66,7 @@ const Layout = props => {
 
         <Menu links={data.mainMenu.links} />
       </AppBar>
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
       <Footer siteTitle={data.site.name} footerContent={data.site.name} />
     </div>
   );

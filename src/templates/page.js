@@ -53,7 +53,6 @@ const PageTemplate = ({ data }) => {
               key={key}
               type={type}
               fluid={block.sectionImage && block.sectionImage.fluid}
-              backgroundImage={block.sectionImage && block.sectionImage.url}
               backgroundColor={block.sectionColor && block.sectionColor.rgb}
               height={`400px`}
             >
