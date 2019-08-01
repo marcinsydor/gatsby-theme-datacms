@@ -1,11 +1,11 @@
 import { graphql } from "gatsby";
+import { Section } from "gatsby-theme-ui";
 import React from "react";
 import Gallery from "../components/gallery";
 import SEO from "../components/seo";
-import { Section } from "gatsby-theme-ui";
 
 const ProjectTemplate = ({ data }) => {
-  const { title, gallery, image, content } = data.datoCmsProject;
+  const { title, gallery, image, contentNode } = data.datoCmsProject;
 
   const convertedGallery = gallery.map(image => {
     return {
@@ -20,16 +20,18 @@ const ProjectTemplate = ({ data }) => {
     <>
       <SEO title={title} />
 
-      <Section
-        backgroundImage={image.fluid.src}
-        height={`400px`}
-        type={"content"}
-      >
+      <Section fluid={image.fluid} height={`400px`} type={"content"}>
         <h1 className="title">{title}</h1>
       </Section>
 
       <Section height={`400px`} type={"content"}>
-        {content && <div dangerouslySetInnerHTML={{ __html: content }} />}
+        {contentNode && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: contentNode.childMarkdownRemark.html
+            }}
+          />
+        )}
       </Section>
 
       {convertedGallery && (
@@ -47,6 +49,11 @@ export const query = graphql`
       title
       slug
       content
+      contentNode {
+        childMarkdownRemark {
+          html
+        }
+      }
       image {
         fluid(
           maxWidth: 1200
