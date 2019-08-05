@@ -5,6 +5,7 @@ import Content from "../components/content";
 import Gallery from "../components/gallery";
 import Projects from "../components/projects";
 import SEO from "../components/seo";
+import TwoColumns from "../components/two-columns";
 
 const PageTemplate = ({ data }) => {
   const { title, blocks } = data.datoCmsPage;
@@ -21,6 +22,8 @@ const PageTemplate = ({ data }) => {
             />
           </Content>
         );
+      case "two_columns":
+        return <TwoColumns data={block} />;
       case "gallery":
         return block.images && <Gallery gallery={block.images} />;
       case "slideshow":
@@ -76,6 +79,23 @@ export const query = graphql`
           }
           images {
             url
+          }
+        }
+        ... on DatoCmsTwoColumnsBlock {
+          model {
+            apiKey
+          }
+          title1
+          content1Node {
+            childMarkdownRemark {
+              html
+            }
+          }
+          title2
+          content2Node {
+            childMarkdownRemark {
+              html
+            }
           }
         }
         ... on DatoCmsProjectsBlock {
