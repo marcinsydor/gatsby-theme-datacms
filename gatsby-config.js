@@ -23,7 +23,7 @@ module.exports = themeOptions => {
           }
         }
       },
-
+      `gatsby-plugin-mdx`,
       {
         resolve: `gatsby-source-datocms`,
         options: {

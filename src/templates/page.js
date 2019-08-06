@@ -54,6 +54,7 @@ const PageTemplate = ({ data }) => {
           return (
             <Section
               key={key}
+              index={key}
               type={type}
               fluid={block.sectionImage && block.sectionImage.fluid}
               backgroundColor={block.sectionColor && block.sectionColor.rgb}
@@ -87,14 +88,16 @@ export const query = graphql`
           }
           title1
           content1Node {
-            childMarkdownRemark {
-              html
+            childMdx {
+              body
+              mdxAST
             }
           }
           title2
           content2Node {
-            childMarkdownRemark {
-              html
+            childMdx {
+              body
+              mdxAST
             }
           }
         }
