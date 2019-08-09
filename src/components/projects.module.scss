@@ -1,14 +1,1 @@
-@import "../styles/breakpoints";
-
-.host {
-  .subtitle {
-    text-align: center;
-  }
-
-  .thumbs {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -$grid-gutter / 2;
-    justify-content: center;
-  }
-}
+@import "./projects.base.module";

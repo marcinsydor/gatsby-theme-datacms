@@ -1,18 +1,15 @@
+@import "~gatsby-theme-ui/src/components/theme";
+
 .host {
-  $color: #b4c6d6;
-
-  background-color: #496279;
-  color: $color;
-
+  background-color: $primary;
   padding: 20px 15px;
-  text-align: center;
+  color: $primary-text;
 
-  .contact-content {
-    p {
-      margin: 0;
-    }
-    a {
-      color: $color;
-    }
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: $primary-text;
   }
 }

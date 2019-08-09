@@ -1,6 +1,7 @@
 import { graphql } from "gatsby";
 import { Section } from "gatsby-theme-ui";
 import React from "react";
+import Content from "../components/content";
 import Gallery from "../components/gallery";
 import SEO from "../components/seo";
 
@@ -20,18 +21,22 @@ const ProjectTemplate = ({ data }) => {
     <>
       <SEO title={title} />
 
-      <Section fluid={image.fluid} height={`400px`} type={"content"}>
-        <h1 className="title">{title}</h1>
+      <Section fluid={image.fluid} type={"content"}>
+        <Content>
+          <h1>{title}</h1>
+        </Content>
       </Section>
 
-      <Section height={`400px`} type={"content"}>
-        {contentNode && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: contentNode.childMarkdownRemark.html
-            }}
-          />
-        )}
+      <Section type={"content"}>
+        <Content>
+          {contentNode && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: contentNode.childMarkdownRemark.html
+              }}
+            />
+          )}
+        </Content>
       </Section>
 
       {convertedGallery && (

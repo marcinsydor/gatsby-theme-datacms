@@ -1,0 +1,14 @@
+@import "../styles/breakpoints";
+
+.host {
+  h2 {
+    text-align: center;
+  }
+
+  .thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -$grid-gutter / 2;
+    justify-content: center;
+  }
+}

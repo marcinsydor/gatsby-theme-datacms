@@ -14,12 +14,7 @@ const PageTemplate = ({ data }) => {
     switch (type) {
       case "content":
         return (
-          <Content>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: block.contentNode.childMarkdownRemark.html
-              }}
-            />
+          <Content data={block}>
           </Content>
         );
       case "two_columns":
@@ -90,14 +85,12 @@ export const query = graphql`
           content1Node {
             childMdx {
               body
-              mdxAST
             }
           }
           title2
           content2Node {
             childMdx {
               body
-              mdxAST
             }
           }
         }
@@ -130,6 +123,9 @@ export const query = graphql`
           }
           content
           contentNode {
+            childMdx {
+              body
+            }
             childMarkdownRemark {
               html
             }

@@ -67,7 +67,17 @@ const Layout = props => {
         <Menu links={data.mainMenu.links} />
       </AppBar>
       <main className={styles.main}>{children}</main>
-      <Footer siteTitle={data.site.name} footerContent={data.site.name} />
+      <Footer>
+        <div className={styles.copyright}>
+          © {new Date().getFullYear()} {data.site.name}
+        </div>
+        <div
+          className={styles.footerWidget}
+          dangerouslySetInnerHTML={{
+            __html: data.footer.contentNode.childMarkdownRemark.html
+          }}
+        />
+      </Footer>
     </div>
   );
 };

@@ -6,7 +6,7 @@ const Projects = props => {
   const { projects } = props;
   return (
     <div className={styles.host}>
-      <h2 className={styles.subtitle}>Projects</h2>
+      <h2>Projects</h2>
       <ul className={styles.thumbs}>
         {projects.map((project, index) => {
           return (
