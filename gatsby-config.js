@@ -53,7 +53,7 @@ module.exports = themeOptions => {
       {
         resolve: `gatsby-plugin-manifest`,
         options: {
-          name: `magmar-construction`,
+          name: `website`,
           short_name: `website`,
           start_url: `/`,
           background_color: `#367DBA`,

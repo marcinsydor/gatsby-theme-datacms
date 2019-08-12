@@ -28,7 +28,7 @@ const ProjectTemplate = ({ data }) => {
       </Section>
 
       <Section type={"content"}>
-        <Content data={contentNode.childMdx.body}></Content>
+        <Content>{contentNode.childMdx.body}</Content>
       </Section>
 
       {convertedGallery && (
