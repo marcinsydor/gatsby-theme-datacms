@@ -8,15 +8,19 @@ import styles from "./content.module.scss";
 
 const shortcodes = { Link, Button };
 
-const Content = props => (
+const Content = ({ children }) => (
   <div className={cn(styles.host)}>
-    <MDXProvider components={shortcodes}>
-      {props.data.contentNode.childMdx ? (
-        <MDXRenderer>{props.data.contentNode.childMdx.body}</MDXRenderer>
-      ) : (
-        <div>Syntax error</div>
-      )}
-    </MDXProvider>
+    {typeof children === "string" ? (
+      <MDXProvider components={shortcodes}>
+        {children ? (
+          <MDXRenderer>{children}</MDXRenderer>
+        ) : (
+          <div>Syntax error</div>
+        )}
+      </MDXProvider>
+    ) : (
+      children
+    )}
   </div>
 );
 

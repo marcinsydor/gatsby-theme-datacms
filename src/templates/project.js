@@ -28,15 +28,7 @@ const ProjectTemplate = ({ data }) => {
       </Section>
 
       <Section type={"content"}>
-        <Content>
-          {contentNode && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: contentNode.childMarkdownRemark.html
-              }}
-            />
-          )}
-        </Content>
+        <Content data={contentNode.childMdx.body}></Content>
       </Section>
 
       {convertedGallery && (
@@ -55,8 +47,8 @@ export const query = graphql`
       slug
       content
       contentNode {
-        childMarkdownRemark {
-          html
+        childMdx {
+          body
         }
       }
       image {

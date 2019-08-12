@@ -13,10 +13,7 @@ const PageTemplate = ({ data }) => {
   const getBlockContent = (block, type, key) => {
     switch (type) {
       case "content":
-        return (
-          <Content data={block}>
-          </Content>
-        );
+        return <Content>{block.contentNode.childMdx.body}</Content>;
       case "two_columns":
         return <TwoColumns data={block} />;
       case "gallery":
