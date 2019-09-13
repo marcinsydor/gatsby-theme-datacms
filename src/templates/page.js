@@ -6,6 +6,7 @@ import Gallery from "../components/gallery";
 import Projects from "../components/projects";
 import SEO from "../components/seo";
 import TwoColumns from "../components/two-columns";
+import ContactForm from "../components/contact-form";
 
 const PageTemplate = ({ data }) => {
   const { title, blocks } = data.datoCmsPage;
@@ -29,7 +30,8 @@ const PageTemplate = ({ data }) => {
         });
         return <Projects projects={projects} />;
       }
-
+      case "contact_form":
+        return <ContactForm data={block} />;
       default:
         return <div key={key}>{block.model.apiKey} not exists</div>;
     }
@@ -135,6 +137,22 @@ export const query = graphql`
           sectionColor {
             rgb
           }
+        }
+        ... on DatoCmsContactFormBlock {
+          model {
+            apiKey
+          }
+          headerText
+          headerTextNode {
+            childMarkdownRemark {
+              html
+            }
+          }
+          nameLabel
+          emailLabel
+          phoneLabel
+          messageLabel
+          contactEmail
         }
       }
     }
