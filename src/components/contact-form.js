@@ -36,10 +36,10 @@ const ContactForm = ({ data }) => {
 
   const { inputs, setInputs, handleInputChange, handleSubmit } = useSingUpForm(
     {
-      name: "Client",
-      email: "cient@client.com",
-      phone: "07891579777",
-      message: "Hello from client 1"
+      name: "",
+      email: "",
+      phone: "",
+      message: ""
     },
     signup
   );
