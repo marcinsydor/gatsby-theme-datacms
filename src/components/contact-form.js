@@ -1,12 +1,16 @@
 import cn from "classnames";
 import React, { useState } from "react";
+import Recaptcha from "react-recaptcha";
 import useSingUpForm from "../hooks/contact-from-hooks";
 import styles from "./contact-form.module.scss";
 
+// TOOD validate all the fileds
 const ContactForm = ({ data }) => {
   const [sending, setSending] = useState(false);
   const [sendSuccess, setSendSuccess] = useState(false);
   const [sendFailure, setSendFailure] = useState(false);
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
+  const [recaptchaValid, setRecaptchaValid] = useState(false);
 
   const signup = async () => {
     setSending(true);
@@ -15,7 +19,7 @@ const ContactForm = ({ data }) => {
     const url = `/.netlify/functions/contact`;
 
     try {
-      const result = await fetch(url, {
+      await fetch(url, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -69,14 +73,14 @@ const ContactForm = ({ data }) => {
       {sending && <div className={cn(styles.sending)}>Sending...</div>}
       {sendSuccess && (
         <div className={cn(styles.success)}>
-          Thank you. We will be in touch with you soon.
+          Thank you. We will contact you soon.
         </div>
       )}
       {sendFailure && (
         <div className={cn(styles.failure)}>
           <span>
             I can't deliver this messages at the moment. Please try again or
-            click 
+            click
           </span>
           <a href={`mailto:${data.contactEmail}`}>{data.contactEmail}</a>
           <span> to contact us.</span>
@@ -129,7 +133,23 @@ const ContactForm = ({ data }) => {
               value={inputs.message}
             />
           </label>
-          <button>Send</button>
+
+          {data.recaptchaSitekey && (
+            <Recaptcha
+              sitekey={data.recaptchaSitekey}
+              render="explicit"
+              onloadCallback={() => setRecaptchaReady(true)}
+              verifyCallback={() => setRecaptchaValid(true)}
+            />
+          )}
+          <br />
+          <button
+            disabled={
+              (!recaptchaReady || !recaptchaValid) && data.recaptchaSitekey
+            }
+          >
+            Send
+          </button>
         </form>
       )}
       {sendSuccess && <button onClick={restart}>Send again</button>}

@@ -48,6 +48,7 @@ module.exports = themeOptions => {
           }
         }
       },
+      `gatsby-plugin-recaptcha`,
       `gatsby-plugin-sharp`,
       `gatsby-background-image`,
       {

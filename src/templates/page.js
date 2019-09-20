@@ -53,6 +53,7 @@ const PageTemplate = ({ data }) => {
               fluid={block.sectionImage && block.sectionImage.fluid}
               backgroundColor={block.sectionColor && block.sectionColor.rgb}
               height={`400px`}
+              classNames={type}
             >
               {getBlockContent(block, type, key)}
             </Section>
@@ -153,6 +154,10 @@ export const query = graphql`
           phoneLabel
           messageLabel
           contactEmail
+          recaptchaSitekey
+          sectionColor {
+            rgb
+          }
         }
       }
     }
