@@ -19,9 +19,9 @@ const ContactForm = ({ data }) => {
     const url = `/.netlify/functions/contact`;
     const nl = "\r\n";
 
-    const message = `${inputs.message}${nl}${nl}${inputs.name}${nl}${inputs.phone}${nl}${inputs.email}`;
+    const message = `${inputs.message}${nl}${inputs.name}${nl}${inputs.phone}${nl}${inputs.email}`;
     const data = {
-      subject: `Enquiry from: ${inputs.name}`,
+      subject: `Enquiry from: ${inputs.name} ${inputs.phone}`,
       ...inputs,
       message: message
     };
