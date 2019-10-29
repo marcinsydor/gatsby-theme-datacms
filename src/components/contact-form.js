@@ -18,6 +18,13 @@ const ContactForm = ({ data }) => {
     // TOOD read the value from environment variable
     const url = `/.netlify/functions/contact`;
 
+    const message = `${inputs.message}<br><br>${inputs.name}<br>${inputs.phone}<br>${inputs.email}`;
+    const data = {
+      subject: `Enquiry from: ${inputs.name}`,
+      ...inputs,
+      message: message
+    };
+
     try {
       await fetch(url, {
         method: "POST",
@@ -27,7 +34,7 @@ const ContactForm = ({ data }) => {
         headers: new Headers(),
         redirect: "follow",
         referrer: "no-referrer",
-        body: JSON.stringify(inputs)
+        body: JSON.stringify(data)
       });
       setSendSuccess(true);
     } catch (e) {
