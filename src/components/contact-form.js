@@ -17,7 +17,7 @@ const ContactForm = ({ data }) => {
 
     // TOOD read the value from environment variable
     const url = `/.netlify/functions/contact`;
-    const nl = escape("\r\n");
+    const nl = "\r\n";
 
     const message = `${inputs.message}${nl}${nl}${inputs.name}${nl}${inputs.phone}${nl}${inputs.email}`;
     const data = {
