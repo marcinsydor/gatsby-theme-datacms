@@ -27,7 +27,7 @@
     "gatsby-theme-ui": "*",
     "gatsby-transformer-remark": "^2.6.21",
     "react-recaptcha": "^2.3.10",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.7.2",
     "react-css-modules": "^4.7.11",
     "react-helmet": "^5.2.1",
